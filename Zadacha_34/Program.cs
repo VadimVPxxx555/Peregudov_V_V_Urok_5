@@ -13,7 +13,7 @@ int[] ArrayData(int arrNumber, int leftRange, int rightRange)
    int i = 0;
   for(i = 0; i < array.Length; i++)
   {
-    array[i] = rand.Next(leftRange, rightRange);
+    array[i] = rand.Next(leftRange, rightRange + 1);
   } 
   return array;
 }
