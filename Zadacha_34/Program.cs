@@ -3,15 +3,17 @@
 
 Console.Clear();
 
-int numberSchet = new Random().Next(5, 16);
+Random rand = new Random();
 
-int[] ArrayData(int number)
+//int numberSchet = rand.Next(5, 16);
+
+int[] ArrayData(int arrNumber, int leftRange, int rightRange)
 {
-   int[] array = new int[number];
+   int[] array = new int[arrNumber];
    int i = 0;
   for(i = 0; i < array.Length; i++)
   {
-    array[i] = new Random().Next(100, 1000);
+    array[i] = rand.Next(leftRange, rightRange);
   } 
   return array;
 }
@@ -26,10 +28,19 @@ void ArrayPozitivNumber(int[] arrayP)
            sumPozitiv += 1; 
         }
     }
-    Console.Write($"{sumPozitiv} ");
+    Console.Write($"Четных чисел в массиве -> {sumPozitiv} ");
 }
 
+int DataVvod(string str)
+{
+    Console.Write(str);
+    int number = int.Parse(Console.ReadLine());
+    return number;
+}
 
-int[] array = ArrayData(numberSchet);
+int arrNumber = DataVvod("Введите размер массива ");
+int leftRange = DataVvod("Введите min диапазон массива ");
+int rightRange = DataVvod("Введите max диапазон массива ");
+int[] array = ArrayData(arrNumber, leftRange, rightRange);
 Console.WriteLine('[' + string.Join(",", array) + ']');
 ArrayPozitivNumber(array);
