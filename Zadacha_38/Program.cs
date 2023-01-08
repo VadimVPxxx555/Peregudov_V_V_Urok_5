@@ -2,7 +2,21 @@
 // Найдите разницу между максимальным и минимальным элементом массива.
 Console.Clear();
 
-double[] array = {1.2, 5.4, 10.9, 50.4, 108.7};
+Random rand = new Random();
+
+double[] ArrayData(int arrNumber, int leftRange, int rightRange)
+{
+   double[] array = new double[arrNumber];
+   int i = 0;
+  for(i = 0; i < array.Length; i++)
+  {
+    double r = Math.Round(rand.NextDouble()*rightRange - leftRange, 3);
+    array[i] = r;
+    // array[i] = rand.Next(leftRange, rightRange + 1);
+    // array[i] = Math.Round(array[i], 5);
+  } 
+  return array;
+}
 
 void DifferenceNumberArray(double[] arrayEN)
 {
@@ -27,5 +41,17 @@ void DifferenceNumberArray(double[] arrayEN)
     Console.Write($"разницу между max и min элементом массива -> {difference} ");
 }
 
-Console.WriteLine('[' + string.Join(";", array) + ']');
+int DataEnyer(string str)
+{
+    Console.Write(str);
+    int number = int.Parse(Console.ReadLine());
+    return number;
+}
+
+int arrNumber = DataEnyer("Введите размер массива ");
+int leftRange = DataEnyer("Введите min диапазон массива ");
+int rightRange = DataEnyer("Введите max диапазон массива ");
+
+double[] array = ArrayData(arrNumber, leftRange, rightRange);
+Console.WriteLine('[' + string.Join("; ", array) + ']');
 DifferenceNumberArray(array);
